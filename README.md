@@ -1,0 +1,1 @@
+# -cqrs-is-simpler-with-java
