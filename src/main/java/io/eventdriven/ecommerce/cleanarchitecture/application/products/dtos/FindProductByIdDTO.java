@@ -1,4 +1,6 @@
 package io.eventdriven.ecommerce.cleanarchitecture.application.products.dtos;
 
-public class FindProductByIdDTO {
+import io.eventdriven.ecommerce.cleanarchitecture.entities.products.ProductId;
+
+public record FindProductByIdDTO(ProductId productId) {
 }

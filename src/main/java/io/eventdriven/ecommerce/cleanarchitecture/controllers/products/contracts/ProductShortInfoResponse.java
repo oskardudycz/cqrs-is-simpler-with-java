@@ -1,9 +1,9 @@
-package io.eventdriven.ecommerce.cleanarchitecture.application.products.dtos;
+package io.eventdriven.ecommerce.cleanarchitecture.controllers.products.contracts;
 
 import io.eventdriven.ecommerce.cleanarchitecture.entities.products.ProductId;
 import io.eventdriven.ecommerce.cleanarchitecture.entities.products.SKU;
 
-public record ProductShortInfoDTO(
+public record ProductShortInfoResponse(
   ProductId productId,
   SKU sku
 ) {
