@@ -18,7 +18,7 @@ public class ConcreteProductService implements ProductService {
   }
 
   @Override
-  public ProductDTO create(CreateProductDTO createProductDTO) {
+  public ProductDTO register(RegisterProductDTO createProductDTO) {
     var productExists = productGateway.productExists(createProductDTO.productId());
 
     if (productExists) {

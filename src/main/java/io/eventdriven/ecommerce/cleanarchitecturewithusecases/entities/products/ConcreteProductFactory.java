@@ -8,7 +8,7 @@ import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.
 
 class ConcreteProductFactory implements ProductFactory {
   @Override
-  public Product create(ProductId productId, SKU sku, String name, String password) {
+  public Product register(ProductId productId, SKU sku, String name, String password) {
     return new io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.ConcreteProduct(productId, sku, name, password);
   }
 }

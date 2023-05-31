@@ -1,13 +1,13 @@
 package io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products;
 
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.commands.CreateProductCommand;
+import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.commands.RegisterProductCommand;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.dtos.ProductDTO;
 
-class ConcreteCreateProductUseCase implements CreateProductUseCase {
+class ConcreteRegisterProductUseCase implements RegisterProductUseCase {
   private final ProductGateway productGateway;
   private final ProductDTOMapper productDTOMapper;
 
-  public ConcreteCreateProductUseCase(
+  public ConcreteRegisterProductUseCase(
     ProductGateway productGateway,
     ProductDTOMapper productFactory
   ) {
@@ -16,7 +16,7 @@ class ConcreteCreateProductUseCase implements CreateProductUseCase {
   }
 
   @Override
-  public ProductDTO create(CreateProductCommand createProductDTO) {
+  public ProductDTO register(RegisterProductCommand createProductDTO) {
     var productExists = productGateway.productExists(createProductDTO.productId());
 
     if (productExists) {

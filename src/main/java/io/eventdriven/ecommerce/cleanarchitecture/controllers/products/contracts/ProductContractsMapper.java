@@ -1,6 +1,6 @@
 package io.eventdriven.ecommerce.cleanarchitecture.controllers.products.contracts;
 
-import io.eventdriven.ecommerce.cleanarchitecture.application.products.dtos.CreateProductDTO;
+import io.eventdriven.ecommerce.cleanarchitecture.application.products.dtos.RegisterProductDTO;
 import io.eventdriven.ecommerce.cleanarchitecture.application.products.dtos.ProductDTO;
 import io.eventdriven.ecommerce.cleanarchitecture.application.products.dtos.ProductShortInfoDTO;
 import io.eventdriven.ecommerce.cleanarchitecture.application.products.dtos.UpdateProductDTO;
@@ -11,11 +11,11 @@ import io.eventdriven.ecommerce.cleanarchitecture.entities.products.SKU;
 import java.util.UUID;
 
 public class ProductContractsMapper {
-  public CreateProductDTO map(
+  public RegisterProductDTO map(
     UUID productId,
-    CreateProductRequest createProductDTO
+    RegisterProductRequest createProductDTO
   ) {
-    return new CreateProductDTO(
+    return new RegisterProductDTO(
       new ProductId(productId),
       new SKU(createProductDTO.sku()),
       createProductDTO.name(),

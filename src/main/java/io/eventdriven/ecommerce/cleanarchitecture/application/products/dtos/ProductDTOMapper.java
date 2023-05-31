@@ -10,8 +10,8 @@ public class ProductDTOMapper {
     this.productFactory = productFactory;
   }
 
-  public Product map(CreateProductDTO createProductDTO) {
-    return productFactory.create(
+  public Product map(RegisterProductDTO createProductDTO) {
+    return productFactory.register(
       createProductDTO.productId(),
       createProductDTO.sku(),
       createProductDTO.name(),

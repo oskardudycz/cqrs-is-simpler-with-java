@@ -23,7 +23,7 @@ class JpaProductMapper {
   }
 
   public Product map(JpaProduct product) {
-    return factory.create(
+    return factory.register(
       new ProductId(product.getId()),
       new SKU(product.getSku()),
       product.getName(),

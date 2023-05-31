@@ -1,6 +1,6 @@
 package io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts;
 
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.commands.CreateProductCommand;
+import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.commands.RegisterProductCommand;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.dtos.ProductDTO;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.dtos.ProductShortInfoDTO;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.commands.UpdateProductCommand;
@@ -10,11 +10,11 @@ import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.
 import java.util.UUID;
 
 public class ProductContractsMapper {
-  public CreateProductCommand map(
+  public RegisterProductCommand map(
     UUID productId,
-    CreateProductRequest createProductDTO
+    RegisterProductRequest createProductDTO
   ) {
-    return new CreateProductCommand(
+    return new RegisterProductCommand(
       new ProductId(productId),
       new SKU(createProductDTO.sku()),
       createProductDTO.name(),

@@ -6,7 +6,7 @@ import jakarta.annotation.Nullable;
 
 import java.util.UUID;
 
-public record CreateProductRequest(
+public record RegisterProductRequest(
   String sku,
   String name,
   @Nullable String description

@@ -7,7 +7,7 @@ import jakarta.annotation.Nullable;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public record CreateProduct(
+public record RegisterProduct(
   ProductId productId,
   SKU sku,
   String name,
@@ -16,7 +16,7 @@ public record CreateProduct(
   public static void handle(
     Consumer<Product> addProduct,
     Function<SKU, Boolean> productWithSKUExists,
-    CreateProduct command
+    RegisterProduct command
   ) {
     var product = new Product(
       command.productId(),

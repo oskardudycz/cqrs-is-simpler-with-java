@@ -33,12 +33,12 @@ public class ProductController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  ResponseEntity<ProductResponse> create(
-    @Valid @RequestBody CreateProductRequest request
+  ResponseEntity<ProductResponse> register(
+    @Valid @RequestBody RegisterProductRequest request
   ) throws URISyntaxException {
     var productId = UUID.randomUUID();
 
-    var result = productService.create(
+    var result = productService.register(
       mapper.map(
         productId,
         request

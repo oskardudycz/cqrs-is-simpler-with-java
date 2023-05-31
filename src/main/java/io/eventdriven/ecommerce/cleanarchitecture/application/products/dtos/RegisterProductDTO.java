@@ -4,7 +4,7 @@ import io.eventdriven.ecommerce.cleanarchitecture.entities.products.ProductId;
 import io.eventdriven.ecommerce.cleanarchitecture.entities.products.SKU;
 import jakarta.annotation.Nullable;
 
-public record CreateProductDTO(
+public record RegisterProductDTO(
   ProductId productId,
   SKU sku,
   String name,

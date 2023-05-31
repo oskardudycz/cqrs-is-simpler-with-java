@@ -14,30 +14,30 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-import static io.eventdriven.ecommerce.verticalslices.products.create.CreateProduct.handle;
+import static io.eventdriven.ecommerce.verticalslices.products.create.RegisterProduct.handle;
 
 @Validated
 @RestController
 @RequestMapping("api/products")
-public class CreateProductEndpoint {
+public class RegisterProductEndpoint {
 
   private final JpaProductRepository repository;
 
-  public CreateProductEndpoint(JpaProductRepository repository) {
+  public RegisterProductEndpoint(JpaProductRepository repository) {
     this.repository = repository;
   }
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  ResponseEntity<Void> create(
-    @Valid @RequestBody CreateProductRequest request
+  ResponseEntity<Void> register(
+    @Valid @RequestBody RegisterProductRequest request
   ) throws URISyntaxException {
     var productId = UUID.randomUUID();
 
     handle(
       product -> repository.save(new JpaProduct(product)),
       sku -> repository.existsJpaProductBySku(sku.value()),
-      new CreateProduct(
+      new RegisterProduct(
         new ProductId(productId),
         new SKU(request.sku()),
         request.name(),
@@ -50,7 +50,7 @@ public class CreateProductEndpoint {
       .build();
   }
 
-  public record CreateProductRequest(
+  public record RegisterProductRequest(
     String sku,
     String name,
     @Nullable String description

@@ -1,8 +1,5 @@
 package io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products;
 
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.Product;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.ProductId;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.SKU;
 import jakarta.persistence.Column;
 
 import java.util.Optional;

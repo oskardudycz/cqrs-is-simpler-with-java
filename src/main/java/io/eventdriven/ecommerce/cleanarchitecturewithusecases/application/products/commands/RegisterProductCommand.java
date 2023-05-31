@@ -4,7 +4,7 @@ import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.SKU;
 import jakarta.annotation.Nullable;
 
-public record CreateProductCommand(
+public record RegisterProductCommand(
   ProductId productId,
   SKU sku,
   String name,

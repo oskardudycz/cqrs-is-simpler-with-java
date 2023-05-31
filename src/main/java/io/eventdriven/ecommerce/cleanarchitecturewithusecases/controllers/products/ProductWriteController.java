@@ -1,8 +1,8 @@
 package io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products;
 
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.CreateProductUseCase;
+import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.RegisterProductUseCase;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.UpdateProductUseCase;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts.CreateProductRequest;
+import io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts.RegisterProductRequest;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts.ProductContractsMapper;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts.ProductResponse;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts.UpdateProductRequest;
@@ -21,12 +21,12 @@ import java.util.UUID;
 @RequestMapping("api/products")
 public class ProductWriteController {
   private final ProductContractsMapper mapper;
-  private final CreateProductUseCase createProductUseCase;
+  private final RegisterProductUseCase createProductUseCase;
   private final UpdateProductUseCase updateProductUseCase;
 
   public ProductWriteController(
     ProductContractsMapper mapper,
-    CreateProductUseCase createProductUseCase,
+    RegisterProductUseCase createProductUseCase,
     UpdateProductUseCase updateProductUseCase
   ) {
     this.mapper = mapper;
@@ -36,12 +36,12 @@ public class ProductWriteController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  ResponseEntity<ProductResponse> create(
-    @Valid @RequestBody CreateProductRequest request
+  ResponseEntity<ProductResponse> register(
+    @Valid @RequestBody RegisterProductRequest request
   ) throws URISyntaxException {
     var productId = UUID.randomUUID();
 
-    var result = createProductUseCase.create(
+    var result = createProductUseCase.register(
       mapper.map(
         productId,
         request

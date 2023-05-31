@@ -1,6 +1,6 @@
 package io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products;
 
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.commands.CreateProductCommand;
+import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.commands.RegisterProductCommand;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.dtos.ProductDTO;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.dtos.ProductShortInfoDTO;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.Product;
@@ -13,8 +13,8 @@ public class ProductDTOMapper {
     this.productFactory = productFactory;
   }
 
-  public Product map(CreateProductCommand createProductDTO) {
-    return productFactory.create(
+  public Product map(RegisterProductCommand createProductDTO) {
+    return productFactory.register(
       createProductDTO.productId(),
       createProductDTO.sku(),
       createProductDTO.name(),
