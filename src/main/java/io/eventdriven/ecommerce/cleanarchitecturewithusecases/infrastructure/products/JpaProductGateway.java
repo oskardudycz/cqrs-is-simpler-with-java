@@ -10,11 +10,11 @@ import java.util.Optional;
 
 public class JpaProductGateway implements ProductGateway {
   private final JpaProductRepository repository;
-  private final io.eventdriven.ecommerce.cleanarchitecturewithusecases.infrastructure.products.JpaProductMapper mapper;
+  private final JpaProductMapper mapper;
 
   public JpaProductGateway(
     JpaProductRepository repository,
-    io.eventdriven.ecommerce.cleanarchitecturewithusecases.infrastructure.products.JpaProductMapper mapper
+    JpaProductMapper mapper
   ){
     this.repository = repository;
     this.mapper = mapper;

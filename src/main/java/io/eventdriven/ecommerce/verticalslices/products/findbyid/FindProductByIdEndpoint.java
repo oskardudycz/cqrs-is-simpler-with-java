@@ -1,4 +1,4 @@
-package io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products;
+package io.eventdriven.ecommerce.verticalslices.products.findbyid;
 
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.FindProductByIdUseCase;
 import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.GetProductsUseCase;
@@ -18,12 +18,12 @@ import java.util.UUID;
 @Validated
 @RestController
 @RequestMapping("api/products")
-public class ProductReadController {
+public class FindProductByIdEndpoint {
   private final ProductContractsMapper mapper;
   private final FindProductByIdUseCase findProductByIdUseCase;
   private final GetProductsUseCase getProductsUseCase;
 
-  public ProductReadController(
+  public FindProductByIdEndpoint(
     ProductContractsMapper mapper,
     FindProductByIdUseCase findProductByIdUseCase,
     GetProductsUseCase getProductsUseCase

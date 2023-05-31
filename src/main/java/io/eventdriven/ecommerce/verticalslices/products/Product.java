@@ -1,10 +1,13 @@
-package io.eventdriven.ecommerce.cleanarchitecture.entities.products;
+package io.eventdriven.ecommerce.verticalslices.products;
 
+import io.eventdriven.ecommerce.core.validation.Check;
 import jakarta.persistence.Column;
 
 import java.util.Optional;
+import java.util.UUID;
+import java.util.regex.Pattern;
 
-class ConcreteProduct implements Product {
+public class Product {
   private ProductId productId;
   private SKU sku;
   @Column
@@ -12,7 +15,7 @@ class ConcreteProduct implements Product {
   @Column
   private String description;
 
-  public ConcreteProduct(
+  public Product(
     ProductId productId,
     SKU sku,
     String name,
@@ -24,22 +27,18 @@ class ConcreteProduct implements Product {
     this.description = description;
   }
 
-  @Override
   public ProductId getProductId() {
     return productId;
   }
 
-  @Override
   public SKU getSKU() {
     return sku;
   }
 
-  @Override
   public String getName() {
     return name;
   }
 
-  @Override
   public Optional<String> getDescription() {
     return Optional.ofNullable(description);
   }
@@ -47,5 +46,18 @@ class ConcreteProduct implements Product {
   public void update(String name, String description) {
     this.name = name;
     this.description = description;
+  }
+
+  public record ProductId(UUID value) {
+    public ProductId {
+      Check.IsNotNull(value,"ProductId");
+    }
+  }
+
+  public record SKU(String value) {
+    private static final Pattern SKUPattern = Pattern.compile("[A-Z]{2,4}[0-9]{4,18}");
+    public SKU {
+      Check.MatchesRegexp(value, SKUPattern, "SKU");
+    }
   }
 }

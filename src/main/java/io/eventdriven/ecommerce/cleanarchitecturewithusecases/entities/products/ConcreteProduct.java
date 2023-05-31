@@ -47,18 +47,8 @@ class ConcreteProduct implements Product {
     return Optional.ofNullable(description);
   }
 
-  @Override
-  public void setSKU(SKU sku) {
-
-  }
-
-  @Override
-  public void setName(String name) {
-
-  }
-
-  @Override
-  public void setDescription(String description) {
-
+  public void update(String name, String description) {
+    this.name = name;
+    this.description = description;
   }
 }
