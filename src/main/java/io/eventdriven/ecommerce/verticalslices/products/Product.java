@@ -1,7 +1,7 @@
 package io.eventdriven.ecommerce.verticalslices.products;
 
 import io.eventdriven.ecommerce.core.validation.Check;
-import jakarta.persistence.Column;
+import jakarta.annotation.Nullable;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -10,16 +10,14 @@ import java.util.regex.Pattern;
 public class Product {
   private ProductId productId;
   private SKU sku;
-  @Column
   private String name;
-  @Column
   private String description;
 
   public Product(
     ProductId productId,
     SKU sku,
     String name,
-    String description
+    @Nullable String description
   ) {
     this.productId = productId;
     this.sku = sku;

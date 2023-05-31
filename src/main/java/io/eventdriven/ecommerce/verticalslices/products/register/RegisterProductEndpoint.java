@@ -1,4 +1,4 @@
-package io.eventdriven.ecommerce.verticalslices.products.create;
+package io.eventdriven.ecommerce.verticalslices.products.register;
 
 import io.eventdriven.ecommerce.verticalslices.products.Product.*;
 import io.eventdriven.ecommerce.verticalslices.products.storage.JpaProduct;
@@ -14,7 +14,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-import static io.eventdriven.ecommerce.verticalslices.products.create.RegisterProduct.handle;
+import static io.eventdriven.ecommerce.verticalslices.products.register.RegisterProduct.handle;
 
 @Validated
 @RestController

@@ -1,68 +1,35 @@
 package io.eventdriven.ecommerce.verticalslices.products.findbyid;
 
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.FindProductByIdUseCase;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.GetProductsUseCase;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.dtos.FindProductByIdQuery;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.application.products.dtos.GetProductsQuery;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts.ProductContractsMapper;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts.ProductResponse;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.controllers.products.contracts.ProductShortInfoResponse;
-import io.eventdriven.ecommerce.cleanarchitecturewithusecases.entities.products.ProductId;
+import io.eventdriven.ecommerce.verticalslices.products.Product.ProductId;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.UUID;
+
+import static io.eventdriven.ecommerce.verticalslices.products.findbyid.FindProductById.handle;
 
 @Validated
 @RestController
 @RequestMapping("api/products")
 public class FindProductByIdEndpoint {
-  private final ProductContractsMapper mapper;
-  private final FindProductByIdUseCase findProductByIdUseCase;
-  private final GetProductsUseCase getProductsUseCase;
+  private final ProductDetailsRepository repository;
 
   public FindProductByIdEndpoint(
-    ProductContractsMapper mapper,
-    FindProductByIdUseCase findProductByIdUseCase,
-    GetProductsUseCase getProductsUseCase
+    ProductDetailsRepository repository
   ) {
-    this.mapper = mapper;
-    this.findProductByIdUseCase = findProductByIdUseCase;
-    this.getProductsUseCase = getProductsUseCase;
+    this.repository = repository;
   }
 
   @GetMapping("{id}")
-  ResponseEntity<ProductResponse> getById(
+  ResponseEntity<ProductDetails> getById(
     @PathVariable UUID id
   ) {
-    var productResult = findProductByIdUseCase.findById(
-      new FindProductByIdQuery(new ProductId(id))
-    );
-
     return ResponseEntity.of(
-      productResult.map(
-        product -> mapper.mapToProductResponse(product)
-      )
-    );
-  }
-
-  @GetMapping
-  ResponseEntity<List<ProductShortInfoResponse>> get(
-    @RequestParam int pageNumber,
-    @RequestParam int pageSize
-  ) {
-    var products = getProductsUseCase.getProducts(
-      new GetProductsQuery(pageNumber, pageSize)
-    );
-
-    return ResponseEntity.ok(
-      products.stream()
-        .map(
-          product -> mapper.mapToProductShortInfoResponse(product)
-        )
-        .toList()
+      handle(repository, new FindProductById(new ProductId(id)))
     );
   }
 }

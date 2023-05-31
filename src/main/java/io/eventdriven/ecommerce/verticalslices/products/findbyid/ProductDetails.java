@@ -1,6 +1,5 @@
 package io.eventdriven.ecommerce.verticalslices.products.findbyid;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

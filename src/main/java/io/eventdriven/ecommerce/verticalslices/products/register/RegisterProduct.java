@@ -1,4 +1,4 @@
-package io.eventdriven.ecommerce.verticalslices.products.create;
+package io.eventdriven.ecommerce.verticalslices.products.register;
 
 import io.eventdriven.ecommerce.verticalslices.products.Product;
 import io.eventdriven.ecommerce.verticalslices.products.Product.*;
