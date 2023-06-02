@@ -1,4 +1,4 @@
-name: Samples - Uniqueness in Event Sourcing
+name: CQRS is simpler than you may think
 
 on:
   # run it on push to the default repository branch
@@ -41,6 +41,7 @@ jobs:
         if: always()
         with:
           name: Test report
+          path: ./build/test-results/test
 
       - name: Stop containers
         if: always()
