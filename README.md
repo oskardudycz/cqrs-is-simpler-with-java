@@ -4,7 +4,7 @@
 
 # CQRS is simpler than you may think
 
-You can also watch the talk [below](https://www.youtube.com/watch?v=iY7LO289qnQ):
+You can also watch the talk [below](https://m.youtube.com/watch?v=9COWKz1E32w):
 
 <a href="https://www.youtube.com/watch?v=9COWKz1E32w" target="_blank"><img src="https://img.youtube.com/vi/9COWKz1E32w/0.jpg" alt="Facts and Myths about CQRS" width="640" height="480" border="10" /></a>
 
